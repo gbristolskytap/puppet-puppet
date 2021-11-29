@@ -119,6 +119,24 @@ class puppet::params {
       $server_jruby_gem_home      = undef
     }
 
+    'AIX' : {
+      $dir                        = '/etc/puppetlabs/puppet'
+      $codedir                    = '/etc/puppetlabs/code'
+      $logdir                     = '/var/log/puppetlabs/puppet'
+      $rundir                     = '/var/run/puppetlabs'
+      $ssldir                     = '/etc/puppetlabs/puppet/ssl'
+      $vardir                     = '/opt/puppetlabs/puppet/cache'
+      $sharedir                   = '/opt/puppetlabs/puppet'
+      $bindir                     = '/usr/bin'
+      $root_group                 = 'system'
+      $server_puppetserver_dir    = undef
+      $server_puppetserver_vardir = undef
+      $server_puppetserver_rundir = undef
+      $server_puppetserver_logdir = undef
+      $server_ruby_load_paths     = []
+      $server_jruby_gem_home      = undef
+    }
+
     default : {
       if $aio_package {
         $dir                        = '/etc/puppetlabs/puppet'
@@ -296,6 +314,10 @@ class puppet::params {
     }
   } else {
     case $facts['os']['family'] {
+      'AIX': {
+        $agent_restart_command = "stopsrc ${service_name} && startsrc ${service_name}"
+        $unavailable_runmodes = ['systemd.timer']
+      }
       'Debian': {
         $agent_restart_command = "/usr/sbin/service ${service_name} reload"
         $unavailable_runmodes = ['systemd.timer']

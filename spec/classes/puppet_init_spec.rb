@@ -18,6 +18,10 @@ describe 'puppet' do
         puppet_concat    = '/etc/puppetlabs/puppet/puppet.conf'
         puppet_directory = '/etc/puppetlabs/puppet'
         puppet_package   = 'puppet'
+      when 'AIX'
+        puppet_concat    = '/etc/puppetlabs/puppet/puppet.conf'
+        puppet_directory = '/etc/puppetlabs/puppet'
+        puppet_package   = 'puppet-agent'
       else
         puppet_concat    = '/etc/puppetlabs/puppet/puppet.conf'
         puppet_directory = '/etc/puppetlabs/puppet'

@@ -21,6 +21,11 @@ describe 'puppet' do
         client_package = 'puppet'
         confdir = '/etc/puppetlabs/puppet'
         package_provider = nil
+      when 'AIX'
+        bindir = '/usr/bin'
+        client_package = 'puppet-agent'
+        confdir = '/etc/puppetlabs/puppet'
+        package_provider = nil
       else
         bindir = '/opt/puppetlabs/bin'
         client_package = 'puppet-agent'

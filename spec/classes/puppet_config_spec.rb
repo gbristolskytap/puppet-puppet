@@ -28,6 +28,14 @@ describe 'puppet' do
         rundir    = '/var/run/puppetlabs'
         ssldir    = '/etc/puppetlabs/puppet/ssl'
         vardir    = '/opt/puppetlabs/puppet/cache'
+      when 'AIX'
+        dir_owner = 'root'
+        dir_group = 'system'
+        confdir   = '/etc/puppetlabs/puppet'
+        logdir    = '/var/log/puppetlabs/puppet'
+        rundir    = '/var/run/puppetlabs'
+        ssldir    = '/etc/puppetlabs/puppet/ssl'
+        vardir    = '/opt/puppetlabs/puppet/cache'
       else
         dir_owner = 'root'
         dir_group = nil
